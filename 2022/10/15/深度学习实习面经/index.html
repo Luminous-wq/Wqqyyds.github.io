@@ -133,7 +133,10 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <ol>
+        <hr>
+<p>title：深度学习面经<br>description：实习面经</p>
+<hr>
+<ol>
 <li>BN层的作用<br>神经网络的训练随着网络层数的一个加深，激活函数的输入的整体分布逐渐朝着取值区间上下限靠近，导致反向传播的底层神经网络梯度消失。BN层就是通过规范化，将偏离的分布拉回到标准化的分布是的激活函数的输入值在激活函数对输入敏感的区域，使得梯度变大，加快收敛，避免梯度消失。</li>
 <li>防止过拟合<br>加L1&#x2F;L2正则化；dropout；early stop；数据增强；学习率衰减（Adam优化器）</li>
 <li>RNN<br>循环神经网络，节点定点成环，反馈神经网络，利用内部记忆处理任意时序的输入序列，在神经元之间既有反馈连接又有前馈连接，更容易处理整体的样本。</li>
