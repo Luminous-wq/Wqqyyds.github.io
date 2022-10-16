@@ -1,120 +1,146 @@
-window.addEventListener("DOMContentLoaded", function() {
-  const html            = document.querySelector("html");
-  const navBtn          = document.querySelector(".navbar-btn");
-  const navList         = document.querySelector(".navbar-list");
-  const backToTopFixed  = document.querySelector(".back-to-top-fixed");
-  let lastTop           = 0;
-  let theme             = window.localStorage.getItem('theme') || '';
+$(function(){
+    var activeItem = null;
+    var toTop = document.getElementById("to-top");
+    var scrollDistance = {y: 'undefined'}, scrollDirection;
 
-  theme && html.classList.add(theme)
+    $("#to-top").hide();
+    $(".catalog-dropdown").hide();
+    $("a").focus(function(){this.blur()});
 
-  const goScrollTop = () => {
-    let currentTop = getScrollTop()
-    let speed = Math.floor(-currentTop / 10)
-    if (currentTop > lastTop) {
-      return lastTop = 0
+    $('pre').addClass('linenums');
+    $('pre').addClass('prettyprint');
+    prettyPrint();
+
+    $('.archive-wrapper').find('a').addClass('activeColor');
+    $('.pagination-btn').find('a').addClass('deactiveColor');
+    $('.footer-banner').find('a').addClass('activeColor');
+    $('.post-wrapper').find('a').addClass('activeColor');
+    $('.index-post-title').addClass('deactiveColor');
+    $('.header-title').addClass('deactiveColor');
+    $('.post-date').addClass('deactiveColor');
+    $('.author-name').addClass('deactiveColor');
+    $('.toTop').addClass('deactiveColor');
+
+    
+    //Show More Info in Index
+    $(".index-post-wrapper").on("touchstart", postDetail);
+    $(".index-post-wrapper").on("mouseenter", postDetail);
+    $(".index-post-wrapper").on("mouseleave", postTitle);
+    
+    //Show Catalog
+    $(".catalog-btn").on("click", toggleCatalog);
+    $(".catalog-dropdown").on("click", function(e){
+        e.stopPropagation();
+    });
+
+    //Back To Top
+    $("a.toTop").click(function() {
+        $("html, body").animate({
+            scrollTop: $($(this).attr("href")).offset().top + "px"
+        }, {
+            duration: 500,
+            easing: "swing"
+        });
+        return false;
+    });
+
+    //Show or Hide Gallery Photo
+    $(".gallery-thumbnail").on("click",showGalleryPhoto);
+
+    //Show or Hide Article Lightbox
+    $(".post-content img").on("click",showGalleryPhoto);
+    $(".gallery-photo").on("click",function(e){
+        e.stopPropagation();
+    });
+    $(".close-gallery").on("click",closeGallery);
+    $(".lightbox").on("click",closeGallery);
+    
+    function postDetail(){
+        if (activeItem != $(this)){
+            postTitle.call(activeItem);
+            activeItem = $(this);
+        }
+        $(this).children(".index-post-info").fadeTo(500,1);
+        $(this).find(".index-post-title").removeClass('deactiveColor');
+        $(this).find(".index-post-title").addClass('activeColor');
+        $(this).find(".index-post-categories").children("a").removeClass('deactiveColor');
+        $(this).find(".index-post-categories").children("a").addClass('activeColor');
     }
-    let distance = currentTop + speed;
-    lastTop = distance;
-    document.documentElement.scrollTop = distance;
-    distance > 0 && window.requestAnimationFrame(goScrollTop)
-  }
 
-  const toggleBackToTopBtn = (top) => {
-    top = top || getScrollTop()
-    if (top >= 100) {
-      backToTopFixed.classList.add("show")
-    } else {
-      backToTopFixed.classList.remove("show")
+    function postTitle(){
+        $(this).children(".index-post-info").fadeTo(500,0);
+        $(this).children(".index-post-info").fadeTo(500,0);
+        $(this).find(".index-post-title").addClass('deactiveColor');
+        $(this).find(".index-post-title").removeClass('activeColor');
+        $(this).find(".index-post-categories").children("a").addClass('deactiveColor');
+        $(this).find(".index-post-categories").children("a").removeClass('activeColor');
     }
-  }
 
-  toggleBackToTopBtn()
 
-  // theme light click
-  document.querySelector('#theme-light').addEventListener('click', function () {
-    html.classList.remove('theme-dark')
-    html.classList.add('theme-light')
-    window.localStorage.setItem('theme', 'theme-light')
-  })
+    function toggleCatalog(e){
+        if($(".catalog-dropdown").is(":hidden")){
+            $(".catalog-dropdown").fadeIn();
+        }else{
+            $(".catalog-dropdown").fadeOut();
+        }
 
-  // theme dark click
-  document.querySelector('#theme-dark').addEventListener('click', function () {
-    html.classList.remove('theme-light')
-    html.classList.add('theme-dark')
-    window.localStorage.setItem('theme', 'theme-dark')
-  })
-
-  // theme auto click
-  document.querySelector('#theme-auto').addEventListener('click', function() {
-    html.classList.remove('theme-light')
-    html.classList.remove('theme-dark')
-    window.localStorage.setItem('theme', '')
-  })
-
-  // mobile nav click
-  navBtn.addEventListener("click", function () {
-    html.classList.toggle("show-mobile-nav");
-    this.classList.toggle("active");
-  });
-
-  // mobile nav link click
-  navList.addEventListener("click", function (e) {
-    if (e.target.nodeName == "A" && html.classList.contains("show-mobile-nav")) {
-      navBtn.click()
+        $(document).one("click", function(){
+            $(".catalog-dropdown").fadeOut();
+        });
+        e.stopPropagation();
     }
-  })
 
-  // click back to top
-  backToTopFixed.addEventListener("click", function () {
-    lastTop = getScrollTop()
-    goScrollTop()
-  });
+    //Toggle 'To Top' Button State
+    window.onscroll = function(e){
+        checkScrollDirec();
 
-  window.addEventListener("scroll", function () {
-    toggleBackToTopBtn()
-  }, { passive: true });
+        if(scrollDirection == 'down'){
+            $("#to-top").animate({
+                opacity: 'hide'
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+        }
+        else if(scrollDirection == 'up'){
+            $("#to-top").animate({
+                opacity: 'show'
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+        }
+    }
+    
+    function checkScrollDirec() {
+        if (typeof scrollDistance.y == 'undefined') {
+          scrollDistance.y = window.pageYOffset;
+        }
+        var diffY = scrollDistance.y - window.pageYOffset;
+        if (diffY < 0) {
+          scrollDirection = 'down';
+        } else if (diffY > 0) {
+          scrollDirection = 'up';
+        } else {
+        }
+        scrollDistance.y = window.pageYOffset;
+      }
 
-  /** handle lazy bg iamge */
-  handleLazyBG();
+    function showGalleryPhoto(){
+        $(".lightbox").fadeIn(500);
+        $(".lightbox").attr("style","display: flex");
+        if($(this).attr("value"))
+            //Gallery Photo
+            $(".gallery-photo").attr("src",$(this).attr("value"));
+        else
+            //Article Photo
+            $(".gallery-photo").attr("src",$(this).attr("src"));
+
+        $('body').addClass("hideoverflow");
+    }
+
+    function closeGallery(){
+        $(".lightbox").fadeOut(500);
+        $('body').removeClass("hideoverflow");
+    }
 });
-
-/**
- * 获取当前滚动条距离顶部高度
- *
- * @returns 距离高度
- */
-function getScrollTop () {
-  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-}
-
-function querySelectorArrs (selector) {
-  return Array.from(document.querySelectorAll(selector))
-}
-
-
-function handleLazyBG () {
-  const lazyBackgrounds = querySelectorArrs('[background-image-lazy]')
-  let lazyBackgroundsCount = lazyBackgrounds.length
-  if (lazyBackgroundsCount > 0) {
-    let lazyBackgroundObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function({ isIntersecting, target }) {
-        if (isIntersecting) {
-          let img = target.dataset.img
-          if (img) {
-            target.style.backgroundImage = `url(${img})`
-          }
-          lazyBackgroundObserver.unobserve(target)
-          lazyBackgroundsCount --
-        }
-        if (lazyBackgroundsCount <= 0) {
-          lazyBackgroundObserver.disconnect()
-        }
-      })
-    })
-
-    lazyBackgrounds.forEach(function(lazyBackground) {
-      lazyBackgroundObserver.observe(lazyBackground)
-    })
-  }
-}
