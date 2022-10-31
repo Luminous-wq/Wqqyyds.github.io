@@ -21,23 +21,19 @@
   <title>MVG-SSL - Luminous</title>
 
   
-    <meta name="description" content="滴滴答答哟 进度1.百万级药物数据对训练转为，1w有效药物数据特征提取（√） 2.框架图（待完善，√） 3.自监督复现（√） 4.无自监督模型（原始模型）+自监督模型 5.代码优化（待完善）     任务 时间 状态    DrugBank注册 2022-02-10 √   DrugBank数据下载 2022-02-20 √   XML数据读取  √   DrugBank数据提取  √   Dru">
+    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import csvimport numpy as npimport reimport torchimport torch.nn as nndef getOne_hot_tension_tensor(smile, wo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVG-SSL">
 <meta property="og:url" content="http://example.com/2022/10/17/MVG/index.html">
 <meta property="og:site_name" content="Luminous">
-<meta property="og:description" content="滴滴答答哟 进度1.百万级药物数据对训练转为，1w有效药物数据特征提取（√） 2.框架图（待完善，√） 3.自监督复现（√） 4.无自监督模型（原始模型）+自监督模型 5.代码优化（待完善）     任务 时间 状态    DrugBank注册 2022-02-10 √   DrugBank数据下载 2022-02-20 √   XML数据读取  √   DrugBank数据提取  √   Dru">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import csvimport numpy as npimport reimport torchimport torch.nn as nndef getOne_hot_tension_tensor(smile, wo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/cdn-x/emoji/qq/%E7%88%B1%E5%BF%83.gif">
-<meta property="og:image" content="http://example.com/img/wallhaven-72rxqo_2560x1080.png">
-<meta property="og:image" content="http://example.com/img/wallhaven-gpj1pl_2560x1080.jpg">
 <meta property="article:published_time" content="2022-10-16T17:06:21.081Z">
-<meta property="article:modified_time" content="2022-10-31T12:23:04.814Z">
+<meta property="article:modified_time" content="2022-10-31T13:40:19.717Z">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="生物信息学">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/cdn-x/emoji/qq/%E7%88%B1%E5%BF%83.gif">
+<meta name="twitter:card" content="summary">
   
   
 
@@ -76,7 +72,7 @@
 
 <header class="header">
 
-<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/59729675?v=4" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Luminous</div><div class="sub normal cap">wenq_mar@163.com</div><div class="sub hover cap" style="opacity:0">闪闪发光</div></a></div>
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://raw.githubusercontent.com/emmilia-hub/blog-Images/master/img/202210311504016.jpg" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Luminous</div><div class="sub normal cap">wenq_mar@163.com</div><div class="sub hover cap" style="opacity:0">闪闪发光</div></a></div>
 
 
 <nav class="menu dis-select"><a class="nav-item active" href="/">博客</a><a class="nav-item" href="/friends/">友链</a></nav>
@@ -85,7 +81,9 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">MVG-SSL</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6"><span class="toc-text">进度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%81%E6%B1%82-2022-10-30"><span class="toc-text">要求(2022-10-30)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%96%91%E9%97%AE"><span class="toc-text">疑问</span></a></li></ol></div></div></div>
+
+<div class="widget-wrap" id="recent"><div class="widget-header cap theme dis-select"><span class="name">最近更新</span></div><div class="widget-body related-posts fs14"><a class="item title" href="/2022/10/15/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/"><span class="title">深度学习面经</span></a><a class="item title" href="/2022/10/17/MVG/"><span class="title">MVG-SSL</span></a><a class="item title" href="/2022/10/31/Torch%E5%9F%BA%E7%A1%80%E8%AE%B0%E5%BF%86/"><span class="title">Torch基础语法罢了！</span></a><a class="item title" href="/2022/10/29/%E5%BB%BA%E7%AB%99%E9%9A%8F%E7%AC%94/"><span class="title">建站随笔</span></a></div></div>
+
 
 
 
@@ -104,77 +102,7 @@
 
 <article class='content md post'>
 <h1 class="article-title"><span>MVG-SSL</span></h1>
-<p>滴滴答答<span class="tag-plugin emoji"><img no-lazy="" class="inline lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/emoji/qq/爱心.gif"/></span>哟</p>
-<h4 id="进度"><a href="#进度" class="headerlink" title="进度"></a>进度</h4><p>1.百万级药物数据对训练转为，1w有效药物数据特征提取（√）</p>
-<p>2.框架图（待完善，√）</p>
-<p>3.自监督复现（√）</p>
-<p>4.无自监督模型（原始模型）+自监督模型</p>
-<p>5.代码优化（待完善）</p>
-<hr>
-<table>
-<thead>
-<tr>
-<th align="left">任务</th>
-<th>时间</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">DrugBank注册</td>
-<td>2022-02-10</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">DrugBank数据下载</td>
-<td>2022-02-20</td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">XML数据读取</td>
-<td></td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">DrugBank数据提取</td>
-<td></td>
-<td>√</td>
-</tr>
-<tr>
-<td align="left">DrugBank数据分析</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td align="left"></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td align="left"></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../img/wallhaven-72rxqo_2560x1080.png" alt="img"></p>
-<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/img/wallhaven-gpj1pl_2560x1080.jpg" alt="来自wallhaven的图片。"/><a class="image-download blur" style="opacity:0" target="_blank" rel="noopener" href="https://wallhaven.cc/w/l3xk6q"><svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3734"><path d="M561.00682908 685.55838913a111.03077546 111.03077546 0 0 1-106.8895062 0L256.23182837 487.72885783a55.96309219 55.96309219 0 0 1 79.13181253-79.18777574L450.70357448 523.88101491V181.55477937a55.96309219 55.96309219 0 0 1 111.92618438 0v344.06109173l117.07478902-117.07478901a55.96309219 55.96309219 0 0 1 79.13181252 79.18777574zM282.81429711 797.1487951h447.70473912a55.96309219 55.96309219 0 0 1 0 111.92618438H282.81429711a55.96309219 55.96309219 0 0 1 0-111.92618438z" p-id="3735"></path></svg></a></div><div class="image-meta"><span class="image-caption center">来自wallhaven的图片。</span></div></div>
-
-
-
-
-
-<h4 id="要求-2022-10-30"><a href="#要求-2022-10-30" class="headerlink" title="要求(2022-10-30)"></a>要求(2022-10-30)</h4><ol>
-<li>输入应该是1704 * 64 的特征矩阵与1704 * 1704的标签矩阵，然后就是做矩阵转置相乘得到1704 * 1704的预测矩阵，然后做交叉熵损失训练</li>
-<li>修改one-hot编码格式后的一个编码长度大小—100以内，多余切除，空缺填0？（64, 过）</li>
-</ol>
-<h4 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h4><ol>
-<li>为什么矩阵 * 矩阵的转置就是预测矩阵了？</li>
-</ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import numpy as np</span><br><span class="line">import re</span><br><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getOne_hot_tension_tensor(smile, word):</span><br><span class="line">    one_hot_tension = np.zeros((len(smile), 64), dtype=int)</span><br><span class="line"></span><br><span class="line">    x = 0</span><br><span class="line"></span><br><span class="line">    for y in smile:</span><br><span class="line">        if y not in word:</span><br><span class="line">            word.append(y)</span><br><span class="line">        indexs = word.index(y)</span><br><span class="line">        if indexs &gt; 63:</span><br><span class="line">           # continue</span><br><span class="line">           break</span><br><span class="line"></span><br><span class="line">        one_hot_tension[x][indexs] = 1</span><br><span class="line">        x += 1</span><br><span class="line"></span><br><span class="line">    res = torch.from_numpy(one_hot_tension).float()</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getans(ans):</span><br><span class="line">    encoder_layer = torch.nn.TransformerEncoderLayer(d_model=64, nhead=4)</span><br><span class="line">    # d_model – 输入中预期特征的数量（必需）</span><br><span class="line">    # nhead – 多头注意力模型中的头数（必需）</span><br><span class="line">    transformer_encoder = torch.nn.TransformerEncoder(encoder_layer, num_layers=3)</span><br><span class="line">    # encoder_layer – TransformerEncoderLayer() 类的一个实例（必需）</span><br><span class="line">    # num_layers – 编码器中的子编码器层数（必需）</span><br><span class="line"></span><br><span class="line">    out = transformer_encoder(ans)</span><br><span class="line">    out = out.t()</span><br><span class="line">    Pool = nn.Sequential(</span><br><span class="line">        nn.MaxPool1d((out.size(dim=1))),</span><br><span class="line">        nn.Sigmoid()</span><br><span class="line">    )</span><br><span class="line">    out1 = Pool(out)</span><br><span class="line">    return out1.t()</span><br><span class="line"></span><br><span class="line">def model_tf_ans(smile, word):</span><br><span class="line">    res = getOne_hot_tension_tensor(smile, word)</span><br><span class="line">    return getans(res)</span><br><span class="line"></span><br><span class="line"># if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">#     print(model_tf_ans())</span><br></pre></td></tr></table></figure>
-
-<p>zhangddi: (544 * 64) , (544 * 544)</p>
-<p>现在 y OK， 字典顺序也有了，下一步，制造544 * 64 的输入x数据</p>
-<p>这个x应该是按照字典顺序进行排序的</p>
-<p>544 * 64就位</p>
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a>许可协议，转载请注明出处。</p>
