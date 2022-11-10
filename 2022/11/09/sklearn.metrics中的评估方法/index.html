@@ -3,6 +3,7 @@
 
 <head>
   <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.15.1">
   <meta charset="utf-8">
   
 
@@ -18,7 +19,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>sklearn.metrics中的评估方法 - Luminous</title>
+  
+  <title>Luminous</title>
 
   
     <meta name="description" content="roc_curve  ​	ROC曲线指受试者工作特征曲线&#x2F;接收器操作特性(receiveroperating characteristic，ROC)曲线，是反映灵敏性和特效性连续变量的综合指标，是用构图法揭示敏感性和特异性的相互关系，它通过将连续变量设定出多个不同的临界值，从而计算出一系列敏感性和特异性。 ​	ROC曲线是根据一系列不同的二分类方式（分界值或决定阈），以真正例率（也就是灵">
@@ -73,7 +75,7 @@
 <div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="http://cdn.kitel.top/img/202211040935470.jpg" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Luminous</div><div class="sub normal cap">wenq_mar@163.com</div><div class="sub hover cap" style="opacity:0">闪闪发光</div></a></div>
 
 
-<nav class="menu dis-select"><a class="nav-item active" href="/">博客</a><a class="nav-item" href="/friends/">友链</a></nav>
+<nav class="menu dis-select"><a class="nav-item active" href="/">博客</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/friends/">友链</a><a class="nav-item" href="/about/">关于</a></nav>
 </header>
 
 
@@ -118,6 +120,18 @@
 
 
 
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body waline'>
+      
+
+<div id="waline_container" class="waline_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
 
 
 
@@ -226,7 +240,8 @@
       }
     }
   };
-  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.12.0';
+  stellar.version = '1.15.1';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.15.1';
   stellar.config = {
     date_suffix: {
       just: '刚刚',
@@ -275,6 +290,30 @@
 
 
 <!-- optional -->
+
+  <script>
+  function load_comment(){
+    if(!document.getElementById("waline_container"))return;
+    stellar.loadCSS('https://unpkg.com/@waline/client@v2/dist/waline.css');
+    stellar.loadScript('https://unpkg.com/@waline/client@v2/dist/waline.js', {defer:true}).then(function () {
+      const el = document.getElementById("waline_container");
+      var path = el.getAttribute('comment_id');
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      Waline.init(Object.assign({"js":"https://unpkg.com/@waline/client@v2/dist/waline.js","css":"https://unpkg.com/@waline/client@v2/dist/waline.css","serverURL":null,"commentCount":true,"pageview":false,"emoji":["https://cdn.kitel.top/emojis/weibo","https://cdn.kitel.top/emojis/bmoji","https://cdn.kitel.top/emojis/tieba","https://cdn.kitel.top/emojis/blobg","https://cdn.kitel.top/emojis/blobp","https://cdn.kitel.top/emojis/twmoji"],"meta":["nick","mail","link"]}, {
+        el: '#waline_container',
+        path: path,
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
 
 
 
