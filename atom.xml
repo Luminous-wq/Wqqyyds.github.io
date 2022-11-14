@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Luminous</title>
+  
+  <subtitle>wenq_mar@163.com | 闪闪发光</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2022-11-10T09:35:54.255Z</updated>
+  <id>http://example.com/</id>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习小白入门教程-基础运用篇</title>
+    <link href="http://example.com/2022/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E5%9F%BA%E7%A1%80%E8%BF%90%E7%94%A8%E7%AF%87/"/>
+    <id>http://example.com/2022/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E5%9F%BA%E7%A1%80%E8%BF%90%E7%94%A8%E7%AF%87/</id>
+    <published>2022-11-10T05:40:19.472Z</published>
+    <updated>2022-11-10T09:35:54.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>BioAI小组在线补充~</p><span id="more"></span><h2 class="tag-plugin quot" type="icon" id="初玩PyCharm"><a href="#初玩PyCharm" class="headerlink" title="初玩PyCharm"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />初玩PyCharm</h2><p>创建一个新的Python项目，当然可以用之前的环境，这个不重要，我们可以调整~</p><p><img src="http://cdn.wen-luminous.xyz/202211101520289.png" alt="image-20221110152052247"></p><p><img src="http://cdn.wen-luminous.xyz/202211101522857.png" alt="image-20221110152256756"></p><p>左上角是项目目录，右下角是所使用的python环境，这里我们更换为刚刚创建的xiaobai</p><p><img src="http://cdn.wen-luminous.xyz/202211101524082.png" alt="image-20221110152452056"></p><p><img src="http://cdn.wen-luminous.xyz/202211101735528.png" alt="image-20221110152511651"></p><p><img src="http://cdn.wen-luminous.xyz/202211101525521.png" alt="image-20221110152547454"></p><p><img src="http://cdn.wen-luminous.xyz/202211101531512.png" alt="image-20221110153123461"></p><p><img src="http://cdn.wen-luminous.xyz/202211101531900.png" alt="image-20221110153143852"></p><p><img src="http://cdn.wen-luminous.xyz/202211101532597.png" alt="image-20221110153208545"></p><p><img src="http://cdn.wen-luminous.xyz/202211101532738.png" alt="image-20221110153257705"></p><p><img src="http://cdn.wen-luminous.xyz/202211101533452.png" alt="image-20221110153336376"></p><p><img src="http://cdn.wen-luminous.xyz/202211101536961.png" alt="image-20221110153605913"></p><p>右键文件夹，把bioai文件设置为我们的根目录就好了！</p><p>这样子我们的编辑器就基本上可以开始造了~</p><h2 class="tag-plugin quot" type="icon" id="玩个文本类数据二分类"><a href="#玩个文本类数据二分类" class="headerlink" title="玩个文本类数据二分类"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />玩个文本类数据二分类</h2><p>首先我这里给一个数据集链接：<a href="https://pan.baidu.com/s/1pVCDBJ-KrmgS5SbfTtcGGA?pwd=7777">https://pan.baidu.com/s/1pVCDBJ-KrmgS5SbfTtcGGA?pwd=7777</a><br>提取码：7777</p><p>该数据集是n个病患（每一行代表一个病人）各种生理指标的数据集，我们这里处理的是他的aki指标，我们想通过这个aki指标去判断这个病人是否患病~</p><p>名称短的这个数据集我们用来造分类标签label（对照，Y），长的这个数据集我们用来造特征矩阵（输入，X）</p><p>我们的任务</p><ul><li>读取数据集</li><li>处理数据</li><li>构建分类器模型</li><li>输入数据</li><li>处理结果</li></ul><p>是不是很简单~</p><p>那么接下来，展示~</p><h3 id="第一步，把我们可能用到的包安排上，还有python的标准主函数"><a href="#第一步，把我们可能用到的包安排上，还有python的标准主函数" class="headerlink" title="第一步，把我们可能用到的包安排上，还有python的标准主函数~"></a>第一步，把我们可能用到的包安排上，还有python的标准主函数~</h3><p><img src="http://cdn.wen-luminous.xyz/202211101555445.png" alt="image-20221110155545406"></p><h3 id="第二步，导入数据集，cv大法就好啦"><a href="#第二步，导入数据集，cv大法就好啦" class="headerlink" title="第二步，导入数据集，cv大法就好啦~"></a>第二步，导入数据集，cv大法就好啦~</h3><p><img src="http://cdn.wen-luminous.xyz/202211101558728.png" alt="image-20221110155809694"></p><h3 id="第三步，读取数据集，这里我们用pandas这个包去读取，当然我们可以打印看看读取后是怎么样的"><a href="#第三步，读取数据集，这里我们用pandas这个包去读取，当然我们可以打印看看读取后是怎么样的" class="headerlink" title="第三步，读取数据集，这里我们用pandas这个包去读取，当然我们可以打印看看读取后是怎么样的~"></a>第三步，读取数据集，这里我们用pandas这个包去读取，当然我们可以打印看看读取后是怎么样的~</h3><p><img src="http://cdn.wen-luminous.xyz/202211101558765.png" alt="image-20221110155846718"></p><p>在这个数据集当中，我们只想做一个二分类，不想做多分类，那我们就需要对目标数据进行处理~</p><p>在这里我们对每一个病人的label数据做最大值处理，将结果存入label_aki列表当中，当然也可以打印看看它是啥样的~</p><p><img src="http://cdn.wen-luminous.xyz/202211101610046.png" alt="image-20221110161008983"></p><p>接下来我们造输入去~</p><p><img src="http://cdn.wen-luminous.xyz/202211101613635.png" alt="image-20221110161307578"></p><p>这里我们用了一个train_test_split()函数，它就是用来给我们分割数据集的，分成测试集和验证集~</p><p>但是这里报错了？原来是封装在sklearn里面的一个函数，我们加上他的引用即可~</p><p>pycharm可以自动检错，并给出对应措施的，鼠标移到错误上面就可以啦~</p><p><img src="http://cdn.wen-luminous.xyz/202211101618459.png" alt="image-20221110161810422"></p><p>这里也要注意，我们用torch训练的话，肯定要符合他自己的标准，所以我们把数据转为了tensor格式，这样子才能输入到我们的model里面~</p><p>当然我们可以输出看看，tensor长啥样。</p><p>这里我给出一点点建议~</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 在python查看对象的大小</span><br><span class="line">len(list/dict/map/tensor)</span><br><span class="line">tensor.shape</span><br><span class="line"></span><br><span class="line"># 如果是二维的</span><br><span class="line">len(list[0])</span><br><span class="line"></span><br><span class="line"># 当然还有type查看类型~</span><br></pre></td></tr></table></figure><h3 id="第四步，造model"><a href="#第四步，造model" class="headerlink" title="第四步，造model~"></a>第四步，造model~</h3><p>我们新建一个model.py来存放我们的模型</p><p><img src="http://cdn.wen-luminous.xyz/202211101626289.png" alt="image-20221110162640233"></p><p>当然还可以这样子写~</p><p><img src="http://cdn.wen-luminous.xyz/202211101627506.png" alt="image-20221110162756449"></p><p>这样子，我们就构建了一个非常简单的包含一层隐藏层的分类模型，他的参数有三个（in_dim, n_hidden_1, out_dim），Sequential是集成这些模型的意思，Linear是全连接层，他可以将输入的shape转为输出的shape，就相当于我们输入的tensor大小是[x, in_dim]那么输出就是[x, n_hidden_1]~</p><p>BatchNorm是用来归一化的，relu是激活函数~</p><p>这些都是学习任务，好了在这里我们的model就完成了~</p><p><img src="http://cdn.wen-luminous.xyz/202211101638380.png" alt="image-20221110163845321"></p><p>这里，我们接下来需要引用这个模型，可以这样子做，引用Model这个模型类~</p><h3 id="第五步，开始写训练"><a href="#第五步，开始写训练" class="headerlink" title="第五步，开始写训练"></a>第五步，开始写训练</h3><p>然后写上我们需要训练的一些指标~</p><p><img src="http://cdn.wen-luminous.xyz/202211101639543.png" alt="image-20221110163947492"></p><p>这个copy也需要我们去引用，impor copy即可</p><p>一次训练应该包含：</p><ol><li>获取loss：输入矩阵张量和标签，通过model计算得到预测值，计算损失函数；</li><li>optimizer.zero_grad() 清空过往梯度；</li><li>loss.backward() 反向传播，计算当前梯度；</li><li>optimizer.step() 根据梯度更新网络参数</li></ol><p><img src="http://cdn.wen-luminous.xyz/202211101643297.png" alt="image-20221110164346241"></p><h3 id="第六步，好了，训练我们写完了，现在开始写test，毕竟test结果才是衡量模型的一个主要指标"><a href="#第六步，好了，训练我们写完了，现在开始写test，毕竟test结果才是衡量模型的一个主要指标" class="headerlink" title="第六步，好了，训练我们写完了，现在开始写test，毕竟test结果才是衡量模型的一个主要指标~"></a>第六步，好了，训练我们写完了，现在开始写test，毕竟test结果才是衡量模型的一个主要指标~</h3><p>这里我们先引用一些测试方法</p><p><img src="http://cdn.wen-luminous.xyz/202211101650645.png" alt="image-20221110165029599"></p><p>然后编写测试过程，这里我写的比较繁琐，因为想展示一些测试用的方法是怎么来的，包括稀疏矩阵等等~</p><p>当然可以直接用roc_auc_score等一些方法，直接可以得到~</p><p>希望大家自行尝试！！！</p><p><img src="http://cdn.wen-luminous.xyz/202211101652929.png" alt="image-20221110165253865"></p><p>然后引用这个test函数</p><p><img src="http://cdn.wen-luminous.xyz/202211101656604.png" alt="image-20221110165643538"></p><h3 id="第七步，然后我们记录我们的结果，并用matplotlib记录下来，编写一个绘图函数"><a href="#第七步，然后我们记录我们的结果，并用matplotlib记录下来，编写一个绘图函数" class="headerlink" title="第七步，然后我们记录我们的结果，并用matplotlib记录下来，编写一个绘图函数~"></a>第七步，然后我们记录我们的结果，并用matplotlib记录下来，编写一个绘图函数~</h3><p><img src="http://cdn.wen-luminous.xyz/202211101659181.png" alt="image-20221110165946144"></p><p><img src="http://cdn.wen-luminous.xyz/202211101700175.png" alt="image-20221110170046119"></p><h3 id="最后一步，run起来"><a href="#最后一步，run起来" class="headerlink" title="最后一步，run起来~"></a>最后一步，run起来~</h3><h4 id="方式一，右击屏幕，点击run，假如没有，需要去安装（百度吧，累了-）"><a href="#方式一，右击屏幕，点击run，假如没有，需要去安装（百度吧，累了-）" class="headerlink" title="方式一，右击屏幕，点击run，假如没有，需要去安装（百度吧，累了~）"></a>方式一，右击屏幕，点击run，假如没有，需要去安装（百度吧，累了~）</h4><p><img src="http://cdn.wen-luminous.xyz/202211101703637.png" alt="image-20221110170352571"></p><p><img src="http://cdn.wen-luminous.xyz/202211101706302.png" alt="image-20221110170652241"></p><h4 id="方式二，点击下方的terminal，命令行来运行"><a href="#方式二，点击下方的terminal，命令行来运行" class="headerlink" title="方式二，点击下方的terminal，命令行来运行"></a>方式二，点击下方的terminal，命令行来运行</h4><p>在当前目录下，运行python day1110.py即可~</p><p>当然我们也可以把这个结果输入到一个txt文件里面，像这样</p><p>python day1110.py &gt; out1110.txt</p><p><img src="http://cdn.wen-luminous.xyz/202211101707226.png" alt="image-20221110170718174"></p><p><img src="http://cdn.wen-luminous.xyz/202211101707017.png" alt="image-20221110170731943"></p><h3 id="结果"><a href="#结果" class="headerlink" title="结果~"></a>结果~</h3><p><img src="http://cdn.wen-luminous.xyz/202211101708585.png" alt="image-20221110170802552"></p><p>好像不是很好哈~</p><p>需要咱们调整参数咯，还有模型~</p><p>加油，AI小白们！！！</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;BioAI小组在线补充~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="入门教程" scheme="http://example.com/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习小白入门教程-基础环境篇</title>
+    <link href="http://example.com/2022/11/09/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%AF%87/"/>
+    <id>http://example.com/2022/11/09/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%AF%87/</id>
+    <published>2022-11-09T09:23:39.781Z</published>
+    <updated>2022-11-10T09:21:40.534Z</updated>
+    
+    <content type="html"><![CDATA[<h2 class="tag-plugin quot" type="icon" id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />Anaconda</h2><p>什么是Anaconda？Anaconda是一个开源的Python和R语言的发行版本，用于计算科学，Anaconda致力于简化软件包管理系统和部署。Anaconda的包使用软件包管理系统Conda进行管理。说白了，<mark class="tag-plugin mark" color="orange">Anaconda就是一个装Python的容器，我们可以在其中创建很多个Python环境以应对不同的需求</mark></p><h3 id="安装包下载方式一：官网（科学上网比较慢，不推荐）"><a href="#安装包下载方式一：官网（科学上网比较慢，不推荐）" class="headerlink" title="安装包下载方式一：官网（科学上网比较慢，不推荐）"></a>安装包下载方式一：官网（科学上网比较慢，不推荐）</h3><div class="tag-plugin link dis-select"><a class="link-card rich" title="" href="https://www.anaconda.com/products/distribution" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill="title,icon,desc"><div class="top"><div class="lazy img" data-bg="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg"></div><span class="cap link fs12">https://www.anaconda.com/products/distribution</span></div><div class="bottom"><span class="title">https://www.anaconda.com/products/distribution</span><span class="cap desc fs12"></span></div></a></div><p><img src="http://cdn.wen-luminous.xyz/202211101147435.png" alt="image-20221110114730350"></p><h3 id="安装包下载方式二：清华镜像（推荐）"><a href="#安装包下载方式二：清华镜像（推荐）" class="headerlink" title="安装包下载方式二：清华镜像（推荐）"></a>安装包下载方式二：清华镜像（推荐）</h3><div class="tag-plugin link dis-select"><a class="link-card rich" title="" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill="title,icon,desc"><div class="top"><div class="lazy img" data-bg="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg"></div><span class="cap link fs12">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</span></div><div class="bottom"><span class="title">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</span><span class="cap desc fs12"></span></div></a></div><p>选自己想安装的版本，目前多数用Anaconda3，建议选最高版本下面一两版，我自己的大概是19年的版本，4.9左右。</p><p><img src="http://cdn.wen-luminous.xyz/202211101153150.png" alt="image-20221110115351036"></p><h3 id="具体安装步骤（跟着箭头来就行）"><a href="#具体安装步骤（跟着箭头来就行）" class="headerlink" title="具体安装步骤（跟着箭头来就行）"></a>具体安装步骤（跟着箭头来就行）</h3><p><img src="http://cdn.wen-luminous.xyz/202211101225907.png" alt="image-20221110122555828"></p><p><img src="http://cdn.wen-luminous.xyz/202211101226661.png" alt="image-20221110122627622"></p><p><img src="http://cdn.wen-luminous.xyz/202211101227559.png" alt="image-20221110122712523"></p><p><img src="http://cdn.wen-luminous.xyz/202211101228918.png" alt="image-20221110122757417"></p><p><img src="http://cdn.wen-luminous.xyz/202211101229248.png" alt="image-20221110122900211"></p><p>这里我们不加环境变量，等会自己配置~</p><p>然后后面就正常结束就行了，不需要勾其他的了~</p><h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><p>我的电脑—&gt;设置—&gt;高级系统设置—&gt;环境变量</p><p>在系统变量的Path中加入以下五个变量（记着刚刚的安装位置哈~）</p><p><img src="http://cdn.wen-luminous.xyz/202211101233251.png" alt="image-20221110123336215"></p><p><img src="http://cdn.wen-luminous.xyz/202211101234082.png" alt="image-20221110123402055"></p><p>下面开始验证~</p><p>cmd 输入 conda –version</p><p><img src="http://cdn.wen-luminous.xyz/202211101236627.png" alt="image-20221110123603589"></p><p>conda info</p><p><img src="http://cdn.wen-luminous.xyz/202211101236636.png" alt="image-20221110123643578"></p><p>python</p><p><img src="http://cdn.wen-luminous.xyz/202211101237127.png" alt="image-20221110123717095"></p><p>然后检验这个（他的环境客户端）有没有装好，win界面下的</p><p><img src="http://cdn.wen-luminous.xyz/202211101238493.png" alt="image-20221110123824444"></p><p>如果都OK，那恭喜你~</p><h2 class="tag-plugin quot" type="icon" id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />PyCharm</h2><p>什么是PyCharm？PyCharm是一个用于计算机编程的集成开发环境，主要用于Python语言开发，由捷克公司JetBrains开发，提供代码分析、图形化调试器，集成测试器、集成版本控制系统，并支持使用Django进行网页开发。 PyCharm是一个跨平台开发环境，拥有Microsoft Windows、macOS和Linux版本。说白了就是Python的编辑器~</p><p>这个安装就不多赘述了，看菜鸟教程即可（下载社区版，免费的），还有一点我们不需要再安装Python了，因为刚刚下载Anaconda已经将基础Python到位了。</p><h3 id="安装链接"><a href="#安装链接" class="headerlink" title="安装链接"></a>安装链接</h3><div class="tag-plugin link dis-select"><a class="link-card rich" title="" href="https://www.runoob.com/w3cnote/pycharm-windows-install.html" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill="title,icon,desc"><div class="top"><div class="lazy img" data-bg="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg"></div><span class="cap link fs12">https://www.runoob.com/w3cnote/pycharm-windows-install.html</span></div><div class="bottom"><span class="title">https://www.runoob.com/w3cnote/pycharm-windows-install.html</span><span class="cap desc fs12"></span></div></a></div><h2 class="tag-plugin quot" type="icon" id="conda"><a href="#conda" class="headerlink" title="conda"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />conda</h2><p>运用conda的目的：集成多种python环境，兼容linux，方便后续的GPU训练</p><h3 id="conda基础语句（够科研小白用）"><a href="#conda基础语句（够科研小白用）" class="headerlink" title="conda基础语句（够科研小白用）"></a>conda基础语句（够科研小白用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># 下面展示的xiaobai是代指用户创建的虚拟环境名字</span><br><span class="line"></span><br><span class="line"># 查看conda版本</span><br><span class="line">conda --version</span><br><span class="line"></span><br><span class="line"># 查看当前conda基础信息</span><br><span class="line">conda info</span><br><span class="line"></span><br><span class="line"># 查看conda已经安装的python环境，第二种更常用</span><br><span class="line">conda info --env </span><br><span class="line">conda info -e</span><br><span class="line"></span><br><span class="line"># 查看当前conda已安装的拓展包，第二条就是本地环境下拥有的拓展包</span><br><span class="line">conda list</span><br><span class="line">pip list</span><br><span class="line"></span><br><span class="line"># 创建虚拟环境(下面这句话是，创建一个叫xiaobai的虚拟环境，其中python版本是3.8)</span><br><span class="line">conda create -n=xiaobai python=3.8</span><br><span class="line"></span><br><span class="line"># 删除虚拟环境</span><br><span class="line">conda remove -n=xiaobai --all</span><br><span class="line"></span><br><span class="line"># 启动虚拟环境</span><br><span class="line">conda activate xiaobai</span><br><span class="line"></span><br><span class="line"># 退出虚拟环境</span><br><span class="line">conda deactivate</span><br><span class="line"></span><br><span class="line"># 在当前虚拟环境中安装拓展包(用conda是在当前虚拟环境中安装，用pip是在整体环境上安装，pip &gt; conda，整体包括虚拟环境)</span><br><span class="line">conda install xxx</span><br><span class="line">pip install xxx</span><br><span class="line"></span><br><span class="line"># 在指定虚拟环境安装</span><br><span class="line">conda install -n xiaobai xxx</span><br><span class="line"></span><br><span class="line"># 更新拓展包</span><br><span class="line">conda update xxx</span><br><span class="line"></span><br><span class="line"># 删除拓展包</span><br><span class="line">conda uninstall xxx</span><br><span class="line">pip uninstall xxx</span><br><span class="line"></span><br><span class="line"># 添加镜像源，在国内科学上网~</span><br><span class="line"># conda下载大型文件耗时，如果没有科学上网</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure><h2 class="tag-plugin quot" type="icon" id="入门前拓展包准备"><a href="#入门前拓展包准备" class="headerlink" title="入门前拓展包准备"></a><img class="icon prefix" src="https://bu.dusays.com/2022/10/24/63567d3e07da3.png" />入门前拓展包准备</h2><h3 id="基础包"><a href="#基础包" class="headerlink" title="基础包"></a>基础包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">conda install numpy</span><br><span class="line">conda install pandas</span><br><span class="line">conda install matplotlib</span><br><span class="line">conda install sklearn</span><br><span class="line"># 看见y/n 输入y，回车</span><br><span class="line"># 如果遇到报错，可能是你的科学上网环境不行，也可能是指令错误，可以把conda install换为pip install试试</span><br><span class="line"># 如果太慢了，那就在后面加上镜像源去下载比如 pip install TensorFlow -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"># 如果还不OK，那就Google搜安装xxx包找到正确的指令</span><br></pre></td></tr></table></figure><p><img src="http://cdn.wen-luminous.xyz/202211101445524.png" alt="image-20221110141754916"></p><h3 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h3><p>首先查看本地的一个配置，假如要安装GPU版本的PyTorch，但我们这里用CPU入门~</p><p>cmd 输入 nvidia-smi（这种情况是需要电脑上有单独的英伟达的显卡、或者英伟达的显卡和集显这两种情况都是可以的。）</p><p><img src="http://cdn.wen-luminous.xyz/202211101445283.png" alt="image-20221110142255963"></p><p>我们这边先用CPU试试水，GPU可以找指导老师要个号去玩玩。</p><p>进入PyTorch官网，找本机下载语句</p><div class="tag-plugin link dis-select"><a class="link-card rich" title="" href="https://pytorch.org/" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill="title,icon,desc"><div class="top"><div class="lazy img" data-bg="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg"></div><span class="cap link fs12">https://pytorch.org/</span></div><div class="bottom"><span class="title">https://pytorch.org/</span><span class="cap desc fs12"></span></div></a></div><p><img src="http://cdn.wen-luminous.xyz/202211101445465.png" alt="image-20221110142502459"></p><p>复制过来，然后在命令行下载就行</p><p><img src="http://cdn.wen-luminous.xyz/202211101445319.png" alt="image-20221110142613485"></p><p>可能有点慢，如果是科学上网不允许，这时候可以用这条试试水（俺也不保证成不成功，反正我上面用官网的语句是成功了）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install PyTorch -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure><p>安装完毕之后，最重要的一点来了~</p><p>检查是否成功！！！！</p><p>进入python环境</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">torch.__version__</span><br><span class="line">torch.cuda_is_available()</span><br></pre></td></tr></table></figure><p>如果出现我这种结果，那么恭喜~</p><p><img src="http://cdn.wen-luminous.xyz/202211101445989.png" alt="image-20221110144302860"></p><p>如果你安装的是GPU版本的，那么torch.cuda_is_available()应该出现True，否则就是失败~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 class=&quot;tag-plugin quot&quot; type=&quot;icon&quot; id=&quot;Anaconda&quot;&gt;&lt;a href=&quot;#Anaconda&quot; class=&quot;headerlink&quot; title=&quot;Anaconda&quot;&gt;&lt;/a&gt;&lt;img class=&quot;icon prefix&quot; s</summary>
+      
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="入门教程" scheme="http://example.com/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sklearn.metrics中的评估方法</title>
+    <link href="http://example.com/2022/11/09/sklearn.metrics%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2022/11/09/sklearn.metrics%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/</id>
+    <published>2022-11-09T07:47:40.003Z</published>
+    <updated>2022-11-09T08:35:28.545Z</updated>
+    
+    <content type="html"><![CDATA[<h3 class="tag-plugin quot" type="text" id="roc_curve"><a href="#roc_curve" class="headerlink" title="roc_curve"></a>roc_curve</h3><p>​ROC曲线指受试者工作特征曲线&#x2F;接收器操作特性(receiveroperating characteristic，ROC)曲线，是反映灵敏性和特效性连续变量的综合指标，是用构图法揭示敏感性和特异性的相互关系，它通过将连续变量设定出多个不同的临界值，从而计算出一系列敏感性和特异性。</p><p>​ROC曲线是根据一系列不同的二分类方式（分界值或决定阈），以真正例率（也就是灵敏度）（True Positive Rate，TPR）为纵坐标，假正例率（1-特效性）（False Positive Rate，FPR）为横坐标绘制的曲线。</p><p>​ROC观察模型正确地识别正例的比例与模型错误地把负例数据识别成正例的比例之间的权衡。TPR的增加以FPR的增加为代价。ROC曲线下的面积是模型准确率的度量，AUC（Area under roccurve）。</p><p>​纵坐标：真正率（True Positive Rate , TPR）或灵敏度（sensitivity）</p><p>​横坐标：假正率（False Positive Rate , FPR）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sklearn.metrics.roc_curve(y_true,y_score,pos_label=None, </span><br><span class="line">                              sample_weight=None, drop_intermediate=True)</span><br><span class="line"></span><br><span class="line"># 该函数返回这三个变量：fpr,tpr,thresholds（阈值，表示分类器认为某个样本具有多大的概率属于正样本（或负样本））</span><br><span class="line"># TPR = TP /（TP + FN）（正样本预测结果数 / 正样本实际数）</span><br><span class="line"># FPR = FP /（FP + TN） （被预测为正的负样本结果数 /负样本实际数）</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">&gt;&gt;&gt;import numpy as np</span><br><span class="line">&gt;&gt;&gt;from sklearn import metrics</span><br><span class="line">&gt;&gt;&gt;y = np.array([1, 1, 2, 2])</span><br><span class="line">&gt;&gt;&gt;scores = np.array([0.1, 0.4, 0.35, 0.8])</span><br><span class="line">&gt;&gt;&gt;fpr, tpr, thresholds = metrics.roc_curve(y, scores, pos_label=2)</span><br><span class="line">&gt;&gt;&gt;fpr</span><br><span class="line">array([0. ,  0.5,  0.5, 1. ])</span><br><span class="line">&gt;&gt;&gt;tpr</span><br><span class="line">array([0.5,  0.5,  1. , 1. ])</span><br><span class="line">&gt;&gt;&gt;thresholds</span><br><span class="line">array([0.8 ,  0.4 ,  0.35, 0.1 ])</span><br><span class="line">&gt;&gt;&gt;from sklearn.metrics import auc </span><br><span class="line">&gt;&gt;&gt;metrics.auc(fpr, tpr) </span><br><span class="line">0.75 </span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 class=&quot;tag-plugin quot&quot; type=&quot;text&quot; id=&quot;roc_curve&quot;&gt;&lt;a href=&quot;#roc_curve&quot; class=&quot;headerlink&quot; title=&quot;roc_curve&quot;&gt;&lt;/a&gt;roc_curve&lt;/h3&gt;
+
+&lt;p&gt;​	RO</summary>
+      
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="评估方法" scheme="http://example.com/tags/%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习</title>
+    <link href="http://example.com/2022/11/07/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/11/07/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-11-07T14:07:48.355Z</published>
+    <updated>2022-11-07T14:11:12.042Z</updated>
+    
+    <content type="html"><![CDATA[<p>研0之路——强化学习~</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;研0之路——强化学习~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="强化学习" scheme="http://example.com/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="强化学习" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>联邦学习</title>
+    <link href="http://example.com/2022/11/07/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/11/07/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-11-07T14:07:48.355Z</published>
+    <updated>2022-11-07T14:10:35.410Z</updated>
+    
+    <content type="html"><![CDATA[<p>研0之路——联邦学习~</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;研0之路——联邦学习~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="联邦学习" scheme="http://example.com/categories/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="物联网" scheme="http://example.com/categories/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+    
+    
+    <category term="联邦学习" scheme="http://example.com/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="物联网" scheme="http://example.com/tags/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>欢的菜谱</title>
+    <link href="http://example.com/2022/11/07/%E8%8F%9C%E8%B0%B1-%E6%AC%A2/"/>
+    <id>http://example.com/2022/11/07/%E8%8F%9C%E8%B0%B1-%E6%AC%A2/</id>
+    <published>2022-11-07T09:23:04.698Z</published>
+    <updated>2022-11-07T14:06:52.327Z</updated>
+    
+    <content type="html"><![CDATA[<p>按时吃饭，肚肚第一！！！</p><span id="more"></span><h3 id="可乐鸡翅"><a href="#可乐鸡翅" class="headerlink" title="可乐鸡翅"></a>可乐鸡翅</h3><p>原料：<mark class="tag-plugin mark" color="orange">翅中</mark>、<mark class="tag-plugin mark" color="red">可乐</mark>、姜、小葱、蒜</p><p>调料：生抽、耗油、糖、料酒</p><p>鸡翅洗净，斜着划2-3刀，姜片、葱段、料酒与鸡翅冷水下锅，焯水，水开3-4分钟捞起，洗净鸡翅中的血水。<br>起锅烧油，比平常多一丢丢油，加入鸡翅煎至两面微微黄，控制不好火侯就用小火，加入蒜末继续翻炒，加入适量生抽老抽翻炒至滚上颜色，生抽：老抽 &#x3D; 2 : 1足矣，倒入可乐至没过鸡翅，加入适量料酒，若喜甜，放少量糖，中小火炖煮至可乐与油脂融合，转小火，慢慢搅动，防止收汁时糊锅，可以尝一下味道如何，不甜就加糖，来得及，看自己情况，留多少汁，出国前撒下一把葱花，翻炒两下，捞出，搞定！</p><div class="tag-plugin image"><div class="image-bg" style="background:white;padding:16px;"><img src="http://cdn.wen-luminous.xyz/202211072138701.jpg" style="width:200px;"/></div></div><h3 id="红烧茄子"><a href="#红烧茄子" class="headerlink" title="红烧茄子"></a>红烧茄子</h3><p>原料：<mark class="tag-plugin mark" color="purple">茄子一根</mark>、<mark class="tag-plugin mark" color="green">辣椒一根</mark>、蒜、葱</p><p>调料：豆瓣酱、生抽、耗油</p><p>茄子、辣椒洗净切滚刀块，茄子放入盐水浸泡20分钟，记得用重物把上方浮起的茄子块压入盐水中，捞出尽量把水分挤干，蒜切末，葱切小段。</p><p>起锅烧油，下茄子，记得多加一点点油，茄子吸油，中小火翻炒一分钟，茄子赶一边，下一勺豆瓣酱，没有油的话就加一点点在其上面，抄香，和着茄子一起抄，加入辣椒继续翻炒，加入小半碗水，加入生抽、耗油，调料拌匀后，闷煮7-10分钟，看喜好，大火收汁前加入葱花，翻炒几下盛出！</p><div class="tag-plugin image"><div class="image-bg" style="background:white;padding:16px;"><img src="http://cdn.wen-luminous.xyz/202211072139706.jpg" style="width:200px;"/></div></div>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;按时吃饭，肚肚第一！！！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="厨艺实践" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/%E5%8E%A8%E8%89%BA%E5%AE%9E%E8%B7%B5/"/>
+    
+    
+    <category term="日常" scheme="http://example.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+    <category term="下厨" scheme="http://example.com/tags/%E4%B8%8B%E5%8E%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Torch基础语法罢了！</title>
+    <link href="http://example.com/2022/10/31/Torch%E5%9F%BA%E7%A1%80%E8%AE%B0%E5%BF%86/"/>
+    <id>http://example.com/2022/10/31/Torch%E5%9F%BA%E7%A1%80%E8%AE%B0%E5%BF%86/</id>
+    <published>2022-10-31T13:14:15.110Z</published>
+    <updated>2022-11-07T13:49:55.023Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录 Torch 基础学习之路~</p><span id="more"></span><div class="tag-plugin image"><div class="image-bg"><img src="http://cdn.wen-luminous.xyz/202211041538330.png" alt="来自wallhaven的图片。"/><a class="image-download blur" style="opacity:0" href="https://wallhaven.cc/w/l3xk6q"><svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3734"><path d="M561.00682908 685.55838913a111.03077546 111.03077546 0 0 1-106.8895062 0L256.23182837 487.72885783a55.96309219 55.96309219 0 0 1 79.13181253-79.18777574L450.70357448 523.88101491V181.55477937a55.96309219 55.96309219 0 0 1 111.92618438 0v344.06109173l117.07478902-117.07478901a55.96309219 55.96309219 0 0 1 79.13181252 79.18777574zM282.81429711 797.1487951h447.70473912a55.96309219 55.96309219 0 0 1 0 111.92618438H282.81429711a55.96309219 55.96309219 0 0 1 0-111.92618438z" p-id="3735"></path></svg></a></div><div class="image-meta"><span class="image-caption center">来自wallhaven的图片。</span></div></div><h4 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 可以说这个是矩阵之间的点乘，多数咱用这个，x y可以是vector或者tensor</span><br><span class="line">out = torch.matmul(x, y)</span><br><span class="line"></span><br><span class="line"># 对应元素相乘是 * 或者 torch.mul，二者等价</span><br><span class="line">out = x * y</span><br><span class="line">out_other = torch.mul(x, y)</span><br></pre></td></tr></table></figure><h4 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tensor 属性用法：t()</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">x = torch.Tensor([[<span class="number">1</span>, <span class="number">2</span> <span class="number">3</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line">-x = x.t()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x, -x)</span><br><span class="line">x:</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line">-x:</span><br><span class="line"><span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="number">2</span> <span class="number">2</span></span><br><span class="line"><span class="number">3</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;记录 Torch 基础学习之路~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Python" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Python/"/>
+    
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="Pytorch" scheme="http://example.com/tags/Pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>建站随笔</title>
+    <link href="http://example.com/2022/10/29/%E5%BB%BA%E7%AB%99%E9%9A%8F%E7%AC%94/"/>
+    <id>http://example.com/2022/10/29/%E5%BB%BA%E7%AB%99%E9%9A%8F%E7%AC%94/</id>
+    <published>2022-10-29T02:03:49.087Z</published>
+    <updated>2022-11-07T13:49:50.288Z</updated>
+    
+    <content type="html"><![CDATA[<p>建站摸鱼初始记录。</p><span id="more"></span><h4 id="主题：Stellar"><a href="#主题：Stellar" class="headerlink" title="主题：Stellar"></a>主题：Stellar</h4><p>学习参考：<a href="https://xaoxuu.com/wiki/stellar/#start">https://xaoxuu.com/wiki/stellar/#start</a></p><h4 id="手法"><a href="#手法" class="headerlink" title="手法"></a>手法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo s #本地运行</span><br><span class="line">hexo cl #清理静态文件与换成</span><br><span class="line">hexo g #生成静态文件</span><br><span class="line">hexo g -d #部署网站</span><br><span class="line"></span><br><span class="line">hexo version #版本</span><br><span class="line"></span><br><span class="line">#更多请看官方https://hexo.io/zh-cn/docs/commands.html</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;建站摸鱼初始记录。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Web应用" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/Web%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="日常" scheme="http://example.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+    <category term="摸鱼" scheme="http://example.com/tags/%E6%91%B8%E9%B1%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MVG-SSL</title>
+    <link href="http://example.com/2022/10/17/MVG/"/>
+    <id>http://example.com/2022/10/17/MVG/</id>
+    <published>2022-10-16T17:06:21.081Z</published>
+    <updated>2022-11-07T13:48:30.396Z</updated>
+    
+    <content type="html"><![CDATA[<p>一项感兴趣的工作~</p><span id="more"></span><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">import numpy as np</span><br><span class="line">import re</span><br><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getOne_hot_tension_tensor(smile, word):</span><br><span class="line">    one_hot_tension = np.zeros((len(smile), 64), dtype=int)</span><br><span class="line"></span><br><span class="line">    x = 0</span><br><span class="line"></span><br><span class="line">    for y in smile:</span><br><span class="line">        if y not in word:</span><br><span class="line">            word.append(y)</span><br><span class="line">        indexs = word.index(y)</span><br><span class="line">        if indexs &gt; 63:</span><br><span class="line">           # continue</span><br><span class="line">           break</span><br><span class="line"></span><br><span class="line">        one_hot_tension[x][indexs] = 1</span><br><span class="line">        x += 1</span><br><span class="line"></span><br><span class="line">    res = torch.from_numpy(one_hot_tension).float()</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getans(ans):</span><br><span class="line">    encoder_layer = torch.nn.TransformerEncoderLayer(d_model=64, nhead=4)</span><br><span class="line">    # d_model – 输入中预期特征的数量（必需）</span><br><span class="line">    # nhead – 多头注意力模型中的头数（必需）</span><br><span class="line">    transformer_encoder = torch.nn.TransformerEncoder(encoder_layer, num_layers=3)</span><br><span class="line">    # encoder_layer – TransformerEncoderLayer() 类的一个实例（必需）</span><br><span class="line">    # num_layers – 编码器中的子编码器层数（必需）</span><br><span class="line"></span><br><span class="line">    out = transformer_encoder(ans)</span><br><span class="line">    out = out.t()</span><br><span class="line">    Pool = nn.Sequential(</span><br><span class="line">        nn.MaxPool1d((out.size(dim=1))),</span><br><span class="line">        nn.Sigmoid()</span><br><span class="line">    )</span><br><span class="line">    out1 = Pool(out)</span><br><span class="line">    return out1.t()</span><br><span class="line"></span><br><span class="line">def model_tf_ans(smile, word):</span><br><span class="line">    res = getOne_hot_tension_tensor(smile, word)</span><br><span class="line">    return getans(res)</span><br><span class="line"></span><br><span class="line"># if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">#     print(model_tf_ans())</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;一项感兴趣的工作~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="生物信息" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="人工智能" scheme="http://example.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+    <category term="生物信息学" scheme="http://example.com/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习面经</title>
+    <link href="http://example.com/2022/10/15/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/"/>
+    <id>http://example.com/2022/10/15/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/</id>
+    <published>2022-10-15T14:10:03.293Z</published>
+    <updated>2022-11-10T14:31:48.080Z</updated>
+    
+    <content type="html"><![CDATA[<p>希望变得有用~</p><span id="more"></span><h3 id="BN层的作用"><a href="#BN层的作用" class="headerlink" title="BN层的作用"></a>BN层的作用</h3><p>神经网络的训练随着网络层数的一个加深，激活函数的输入的整体分布逐渐朝着取值区间上下限靠近，导致反向传播的底层神经网络梯度消失。BN层就是通过规范化，将偏离的分布拉回到标准化的分布是的激活函数的输入值在激活函数对输入敏感的区域，使得梯度变大，加快收敛，避免梯度消失。</p><h3 id="防止过拟合"><a href="#防止过拟合" class="headerlink" title="防止过拟合"></a>防止过拟合</h3><p>加L1&#x2F;L2正则化；dropout；early stop；数据增强；学习率衰减（Adam优化器）</p><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>循环神经网络，节点定点成环，反馈神经网络，利用内部记忆处理任意时序的输入序列，在神经元之间既有反馈连接又有前馈连接，更容易处理整体的样本。</p><h3 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h3><h3 id="模型不收敛说明什么？"><a href="#模型不收敛说明什么？" class="headerlink" title="模型不收敛说明什么？"></a>模型不收敛说明什么？</h3><p>不能说明这个模型无效,导致模型不收敛的原因可能有数据分类的标注不准确,样本的信息量太大导致模型不足以fit整个样本空间。学习率设置的太大容易产生震荡,太小会导致不收敛。可能复杂的分类任务用了简单的模型。数据没有进行归一化的操作。 </p><h3 id="Relu比sigmod好在哪？"><a href="#Relu比sigmod好在哪？" class="headerlink" title="Relu比sigmod好在哪？"></a>Relu比sigmod好在哪？</h3><p>Sigmoid的导数只有在0的附近时有较好的激活性,而在正负饱和区域的梯度趋向于0,从而产生梯度弥散的现象,而relu在大于0的部分梯度为常数,所以不会有梯度弥散现象。Relu的导数计算的更快。Relu在负半区的导数为0,所以神经元激活值为负时,梯度为0,此神经元不参与训练,具有稀疏性。 </p><h3 id="Attention机制"><a href="#Attention机制" class="headerlink" title="Attention机制"></a>Attention机制</h3><p>权重分配。减少处理高维输入数据的计算负担,结构化的选取输入的子集,从而降低数据的维度。让系统更加容易的找到输入的数据中与当前输出信息相关的有用信息,从而提高输出的质量 </p><h3 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h3><p>激活函数是用来加入非线性因素的,提高神经网络对模型的表达能力,解决线性模型所不能解决的问题。 </p><h3 id="关于分类的算法"><a href="#关于分类的算法" class="headerlink" title="关于分类的算法"></a>关于分类的算法</h3><p>LR，交叉熵，SVM，DT，RF，神经网络</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;希望变得有用~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="深度学习" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="面经汇总" scheme="http://example.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB/"/>
+    
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="人工智能" scheme="http://example.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+    <category term="机器学习" scheme="http://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="实习面经" scheme="http://example.com/tags/%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/"/>
+    
+  </entry>
+  
+</feed>
