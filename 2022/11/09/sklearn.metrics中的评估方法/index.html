@@ -31,7 +31,7 @@
 <meta property="og:description" content="记录一些ML&#x2F;DL内置包的评估方法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-09T07:47:40.003Z">
-<meta property="article:modified_time" content="2022-11-16T07:45:02.353Z">
+<meta property="article:modified_time" content="2022-11-16T08:57:12.100Z">
 <meta property="article:tag" content="评估方法">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -83,7 +83,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">sklearn.metrics中的评估方法</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#roc_curve"><span class="toc-text">roc_curve</span></a></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">sklearn.metrics中的评估方法</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#roc_curve"><span class="toc-text">roc_curve</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E2%80%9C%E5%B9%B8%E8%BF%90%E7%9A%84Alina%E2%80%9D%EF%BC%8C%E5%B7%B1%E6%9B%B4%E6%96%B0"><span class="toc-text">引用“幸运的Alina”，己更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E7%9F%A9%E9%98%B5"><span class="toc-text">分类矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E7%9F%A9%E9%98%B5"><span class="toc-text">回归矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E7%9F%A9%E9%98%B5"><span class="toc-text">聚类矩阵</span></a></li></ol></div></div></div>
 
 
 
@@ -113,6 +113,206 @@
 <p>​	纵坐标：真正率（True Positive Rate , TPR）或灵敏度（sensitivity）</p>
 <p>​	横坐标：假正率（False Positive Rate , FPR）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sklearn.metrics.roc_curve(y_true,y_score,pos_label=None, </span><br><span class="line">                              sample_weight=None, drop_intermediate=True)</span><br><span class="line"></span><br><span class="line"># 该函数返回这三个变量：fpr,tpr,thresholds（阈值，表示分类器认为某个样本具有多大的概率属于正样本（或负样本））</span><br><span class="line"># TPR = TP /（TP + FN）（正样本预测结果数 / 正样本实际数）</span><br><span class="line"># FPR = FP /（FP + TN） （被预测为正的负样本结果数 /负样本实际数）</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">&gt;&gt;&gt;import numpy as np</span><br><span class="line">&gt;&gt;&gt;from sklearn import metrics</span><br><span class="line">&gt;&gt;&gt;y = np.array([1, 1, 2, 2])</span><br><span class="line">&gt;&gt;&gt;scores = np.array([0.1, 0.4, 0.35, 0.8])</span><br><span class="line">&gt;&gt;&gt;fpr, tpr, thresholds = metrics.roc_curve(y, scores, pos_label=2)</span><br><span class="line">&gt;&gt;&gt;fpr</span><br><span class="line">array([0. ,  0.5,  0.5, 1. ])</span><br><span class="line">&gt;&gt;&gt;tpr</span><br><span class="line">array([0.5,  0.5,  1. , 1. ])</span><br><span class="line">&gt;&gt;&gt;thresholds</span><br><span class="line">array([0.8 ,  0.4 ,  0.35, 0.1 ])</span><br><span class="line">&gt;&gt;&gt;from sklearn.metrics import auc </span><br><span class="line">&gt;&gt;&gt;metrics.auc(fpr, tpr) </span><br><span class="line">0.75 </span><br></pre></td></tr></table></figure>
+
+<h3 id="引用“幸运的Alina”，己更新"><a href="#引用“幸运的Alina”，己更新" class="headerlink" title="引用“幸运的Alina”，己更新"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27575895/article/details/83781069">引用“幸运的Alina”，己更新</a></h3><h3 class="tag-plugin quot" type="text" id="分类矩阵"><a href="#分类矩阵" class="headerlink" title="分类矩阵"></a>分类矩阵</h3>
+
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score">metrics.accuracy_score</a>(y_true, y_pred[, …])</td>
+<td>精确度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html#sklearn.metrics.auc">metrics.auc</a>(x, y[, reorder])</td>
+<td>AUC面积</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score">metrics.average_precision_score</a>(y_true, y_score)</td>
+<td>根据预测得分计算平均精度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score">metrics.balanced_accuracy_score</a>(y_true, y_pred)</td>
+<td>计算平衡精度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss">metrics.brier_score_loss</a>(y_true, y_prob[, …])</td>
+<td>计算布里尔分数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report">metrics.classification_report</a>(y_true, y_pred)</td>
+<td>构建显示主要分类指标的文本报告</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html#sklearn.metrics.cohen_kappa_score">metrics.cohen_kappa_score</a>(y1, y2[, labels, …])</td>
+<td>kappa系数用于一致性检验</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix">metrics.confusion_matrix</a>(y_true, y_pred[, …])</td>
+<td>计算混淆矩阵</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score">metrics.f1_score</a>(y_true, y_pred[, labels, …])</td>
+<td>计算F1-score ，也被叫做 平衡 F-score 或者F-measure</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score">metrics.fbeta_score</a>(y_true, y_pred, beta[, …])</td>
+<td>计算 F-beta</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss">metrics.hamming_loss</a>(y_true, y_pred[, …])</td>
+<td>计算两个样本集合之间的平均汉明距离</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss">metrics.hinge_loss</a>(y_true, pred_decision[, …])</td>
+<td>平均hinge loss (non-regularized)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.jaccard_similarity_score.html#sklearn.metrics.jaccard_similarity_score">metrics.jaccard_similarity_score</a>(y_true, y_pred)</td>
+<td>杰卡德相似系数：衡量2个集合的相似度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss">metrics.log_loss</a>(y_true, y_pred[, eps, …])</td>
+<td>对数损耗，又称为逻辑损耗或者交叉熵损耗</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef">metrics.matthews_corrcoef</a>(y_true, y_pred[, …])</td>
+<td>计算马修斯相关系数（MCC）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve">metrics.precision_recall_curve</a>(y_true, …)</td>
+<td>计算不同概率阈值的精确度、召回度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support">metrics.precision_recall_fscore_support</a>(…)</td>
+<td>计算不同支持度下每一个类的精确度，召回度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score">metrics.precision_score</a>(y_true, y_pred[, …])</td>
+<td>计算精确度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score">metrics.recall_score</a>(y_true, y_pred[, …])</td>
+<td>计算召回度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score">metrics.roc_auc_score</a>(y_true, y_score[, …])</td>
+<td>计算AUC</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve">metrics.roc_curve</a>(y_true, y_score[, …])</td>
+<td>计算ROC曲线</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss">metrics.zero_one_loss</a>(y_true, y_pred[, …])</td>
+<td>0-1分类损失</td>
+</tr>
+</tbody></table>
+<h3 class="tag-plugin quot" type="text" id="回归矩阵"><a href="#回归矩阵" class="headerlink" title="回归矩阵"></a>回归矩阵</h3>
+
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html#sklearn.metrics.explained_variance_score">metrics.explained_variance_score</a>(y_true, y_pred)</td>
+<td>解释方差回归评分函数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html#sklearn.metrics.mean_absolute_error">metrics.mean_absolute_error</a>(y_true, y_pred)</td>
+<td>平均绝对误差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error">metrics.mean_squared_error</a>(y_true, y_pred[, …])</td>
+<td>均方误差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html#sklearn.metrics.mean_squared_log_error">metrics.mean_squared_log_error</a>(y_true, y_pred)</td>
+<td>平均平方对数误差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html#sklearn.metrics.median_absolute_error">metrics.median_absolute_error</a>(y_true, y_pred)</td>
+<td>中位数绝对误差</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score">metrics.r2_score</a>(y_true, y_pred[, …])</td>
+<td>R ^ 2(确定系数)</td>
+</tr>
+</tbody></table>
+<h3 class="tag-plugin quot" type="text" id="聚类矩阵"><a href="#聚类矩阵" class="headerlink" title="聚类矩阵"></a>聚类矩阵</h3>
+
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score">metrics.adjusted_mutual_info_score</a>(…[, …])</td>
+<td>互信息 用来衡量两个数据分布的吻合程度</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score">metrics.adjusted_rand_score</a>(labels_true, …)</td>
+<td>兰德指数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabaz_score.html#sklearn.metrics.calinski_harabaz_score">metrics.calinski_harabasz_score</a>(X, labels)</td>
+<td>计算Calinski-Harabasz分数值</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.davies_bouldin_score.html#sklearn.metrics.davies_bouldin_score">metrics.davies_bouldin_score</a>(X, labels)</td>
+<td>计算Davies-Bouldin score.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score">metrics.completeness_score</a>(labels_true, …)</td>
+<td>一个簇 的计算分数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.cluster.contingency_matrix.html#sklearn.metrics.cluster.contingency_matrix">metrics.cluster.contingency_matrix</a>(…[, …])</td>
+<td>建立描述标签之间关系的列联矩阵</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fowlkes_mallows_score.html#sklearn.metrics.fowlkes_mallows_score">metrics.fowlkes_mallows_score</a>(labels_true, …)</td>
+<td>衡量两个簇直接的相似性</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.homogeneity_completeness_v_measure.html#sklearn.metrics.homogeneity_completeness_v_measure">metrics.homogeneity_completeness_v_measure</a>(…)</td>
+<td>同时计算同质性、完整性和V测度得分.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score">metrics.homogeneity_score</a>(labels_true, …)</td>
+<td>同质性得分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score">metrics.mutual_info_score</a>(labels_true, …)</td>
+<td>互信息得分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized_mutual_info_score.html#sklearn.metrics.normalized_mutual_info_score">metrics.normalized_mutual_info_score</a>(…[, …])</td>
+<td>标准互信息得分</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score">metrics.silhouette_score</a>(X, labels[, …])</td>
+<td>轮廓系数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_samples.html#sklearn.metrics.silhouette_samples">metrics.silhouette_samples</a>(X, labels[, metric])</td>
+<td>计算每个样本的轮廓系数</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score">metrics.v_measure_score</a>(labels_true, labels_pred)</td>
+<td>V测度得分</td>
+</tr>
+</tbody></table>
+
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a>许可协议，转载请注明出处。</p>
 </div></section></div>
